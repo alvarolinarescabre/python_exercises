@@ -16,13 +16,12 @@ def convert_list_to_dict(received_list: list) -> dict:
     :rtype: list
     """
     return_dict = {}
-    for key, number in enumerate(received_list):
+    for number in sorted(received_list):
         if isinstance(number, int):
             return_dict[str(number)] = number
-        else:
-            print(f"The '{received_list[key]}' item must be a integer")
 
     return return_dict
+
 
 # 2) Crear una función que reciba una lista donde se extraigan solo los diccionarios y los devuelva en otra lista,
 # en caso de que la lista de entrada no tenga dict devolver una lista vacía.
@@ -41,6 +40,7 @@ def extract_dict_from_list(received_list: list) -> list:
             return_list.append(value)
 
     return return_list
+
 
 # 3) Como obtengo el siguiente elemento de la lista.
 # Elemento a obtener: {'13': 14, '15': 'dieciséis'}
@@ -66,18 +66,12 @@ def extract_item_from_list(item: any, received_list: list) -> any:
                     for k, lst in enumerate(l2):
                         if lst == item:
                             return l2[k]
-                    else:
-                        if l2 == item:
-                            return l2
         elif isinstance(l1, list):
             for l2 in l1:
                 if isinstance(l2, dict):
                     for k, v in l2.items():
                         if v == item:
                             return l2.get(k)
-                    else:
-                        if l2 == item:
-                            return l2
 
 
 # 4) Crear una función que reciba una lista de diccionarios
@@ -98,6 +92,7 @@ def get_values_from_dict(received_list: list) -> list:
                 return_list.append(v)
 
     return return_list
+
 
 # 5) Crear una función que reciba un diccionario y devuelva una lista con sus valores siempre y cuando su key sea impar,
 # las keys de este diccionario tienen que ser integers, no añadir values de keys que sean string u otro tipo de dato,
@@ -120,6 +115,7 @@ def get_value_from_odd_key(received_dict: dict) -> list:
 
     return return_list
 
+
 # 6) Crear una función que reciba una secuencia (list, string, o tuple) como primer parámetro
 # y reciba "n" como segundo parámetro, debe devolver los últimos "n" elementos de la secuencia,
 # la secuencia debe ser "casteada" a lista.
@@ -129,6 +125,9 @@ def return_last_items(received_seq: any, n: int) -> list:
     :param received_seq: This is the Sequence (List, String or Tuple) argument of the function with Items.
     :type received_seq: any, require
 
+    :param n: This is the number of Item to return.
+    :type n: int, require
+
     :return: A List with Values of the Sequence or Empty List if not Dictionary not has Values.
     :rtype: list
     """
@@ -136,39 +135,3 @@ def return_last_items(received_seq: any, n: int) -> list:
         return list(received_seq[-n::])
     else:
         return []
-
-
-def main() -> None:
-    """ This is the main call function of script
-    :param: N/A
-    :return: None
-    """
-
-    # Práctica No. 1
-    numbers_list = [1, 2, 3, 4, 5, 6, 7, 8]
-    print(convert_list_to_dict(numbers_list))
-
-    # Práctica No. 2
-    numbers_list = [1, 2, 3, 4, 5, 6, 7, {"a": 0}]
-    print(extract_dict_from_list(numbers_list))
-
-    # Práctica No. 3
-    lst = ["1", (2,), ["3", 4, {"5": 6}], ["siete"], "8", {"9": 10, "11": [12, {"13": 14, "15": "dieciséis"}]}]
-    item = {"13": 14, "15": "dieciséis"}
-    print(extract_item_from_list(item, lst))
-
-    # Práctica No. 4
-    numbers_list = [1, 2, 3, 4, 5, 6, 7, {"a": 0}]
-    print(get_values_from_dict(numbers_list))
-
-    # Práctica No. 5
-    numbers_dict = {"a": 0, 0: "a", "b": 1, 1: "b", "c": 2, 2: "c", "d": 3, 3: "d"}
-    print(get_value_from_odd_key(numbers_dict))
-
-    # Práctica No. 6
-    seq = (1, 2, 3, 4, 5, 6, 7, 8, ["A", "B", "C"], "Python")
-    print(return_last_items(seq, 4))
-
-
-if __name__ == "__main__":
-    main()
