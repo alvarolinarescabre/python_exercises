@@ -26,7 +26,7 @@ def convert_list_to_dict(received_list: list) -> dict:
 # 2) Crear una función que reciba una lista donde se extraigan solo los diccionarios y los devuelva en otra lista,
 # en caso de que la lista de entrada no tenga dict devolver una lista vacía.
 def extract_dict_from_list(received_list: list) -> list:
-    """ This Function Take from a List ONLY Dictionary in a New List if not Dictionary in List return Empty List.
+    """ This Function Take from a List of Elements in a New List if not Dictionary in List return Empty List.
 
     :param received_list: This is the List argument of the function with Items.
     :type received_list: list, require
@@ -35,7 +35,7 @@ def extract_dict_from_list(received_list: list) -> list:
     :rtype: list
     """
     return_list = []
-    for key, value in enumerate(received_list):
+    for value in received_list:
         if isinstance(value, dict):
             return_list.append(value)
 
@@ -88,7 +88,7 @@ def get_values_from_dict(received_list: list) -> list:
     return_list = []
     for value in received_list:
         if isinstance(value, dict):
-            for k, v in value.items():
+            for v in value.values():
                 return_list.append(v)
 
     return return_list
@@ -106,15 +106,7 @@ def get_value_from_odd_key(received_dict: dict) -> list:
     :return: A List with Dictionary Values of Odd Key or Empty List if not have Odd Key Dictionary.
     :rtype: list
     """
-    return_list = []
-    for k, v in received_dict.items():
-        if isinstance(k, int):
-            for _ in v:
-                if k % 2 == 1:
-                    return_list.append(v)
-
-    return return_list
-
+    return [v for k, v in received_dict.items() if isinstance(k, int) and if k % 2 == 1]
 
 # 6) Crear una función que reciba una secuencia (list, string, o tuple) como primer parámetro
 # y reciba "n" como segundo parámetro, debe devolver los últimos "n" elementos de la secuencia,
