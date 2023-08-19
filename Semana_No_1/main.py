@@ -125,6 +125,6 @@ def return_last_items(received_seq: any, n: int) -> list:
     :rtype: list
     """
     if hasattr(received_seq, "__iter__") and not isinstance(received_seq, dict) and not isinstance(received_seq, set):
-        return list(received_seq[-n::])
+        return list(received_seq[-n:])
     else:
         return []
