@@ -106,7 +106,7 @@ def get_value_from_odd_key(received_dict: dict) -> list:
     :return: A List with Dictionary Values of Odd Key or Empty List if not have Odd Key Dictionary.
     :rtype: list
     """
-    return [v for k, v in received_dict.items() if isinstance(k, int) and if k % 2 == 1]
+    return [v for k, v in received_dict.items() if isinstance(k, int) and k % 2 == 1]
 
 # 6) Crear una función que reciba una secuencia (list, string, o tuple) como primer parámetro
 # y reciba "n" como segundo parámetro, debe devolver los últimos "n" elementos de la secuencia,
