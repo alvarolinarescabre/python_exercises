@@ -108,22 +108,23 @@ def get_value_from_odd_key(received_dict: dict) -> list:
     """
     return [v for k, v in received_dict.items() if isinstance(k, int) and k % 2 == 1]
 
+
 # 6) Crear una función que reciba una secuencia (list, string, o tuple) como primer parámetro
 # y reciba "n" como segundo parámetro, debe devolver los últimos "n" elementos de la secuencia,
 # la secuencia debe ser "casteada" a lista.
 def return_last_items(received_seq: any, n: int) -> list:
-    """ This Function Take from a Sequence (List, String or Tuple) the "n" Last Values on a List.
+    """ This Function Takes from a Sequences the "n" Last Values on a List.
 
-    :param received_seq: This is the Sequence (List, String or Tuple) argument of the function with Items.
+    :param received_seq: This is the Sequences argument of the function with Items.
     :type received_seq: any, require
 
     :param n: This is the number of Item to return.
     :type n: int, require
 
-    :return: A List with Values of the Sequence or Empty List if not Dictionary not has Values.
+    :return: A List with Values of the Sequences or Empty List if not Dictionary not has Values.
     :rtype: list
     """
-    if isinstance(received_seq, list) or isinstance(received_seq, str) or isinstance(received_seq, tuple):
+    if hasattr(received_seq, "__iter__") and not isinstance(received_seq, dict) and not isinstance(received_seq, set):
         return list(received_seq[-n::])
     else:
         return []
