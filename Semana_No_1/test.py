@@ -76,9 +76,9 @@ class TestGetValuesFromDict(unittest.TestCase):
         self.assertEqual(get_values_from_dict(_numbers_list), _result)
 
     def test_convert_list_to_dict_ko(self):
-        _numbers_list = [1, 2, 3, 4, 5, 6, 7, {"a": 0}]
-        _result = [1]
-        self.assertNotEqual(get_values_from_dict(_numbers_list), _result)
+        _numbers_list = [1, 2, 3, 4, 5, 6, 7, 8]
+        _result = []
+        self.assertEqual(get_values_from_dict(_numbers_list), _result)
 
 
 class TestGetValueFromOddKey(unittest.TestCase):
