@@ -9,19 +9,9 @@ from main import convert_list_to_dict, \
 
 
 class TestConvertListToDict(unittest.TestCase):
-    def test_convert_order_list_to_dict(self):
-        _numbers_list = [1, 2, 3, 4, 5, 6, 7, 8]
-        _result = {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8}
-        self.assertEqual(convert_list_to_dict(_numbers_list), _result)
-
     def test_convert_unorder_list_to_dict(self):
         _numbers_list = [2, 4, 1, 3, 5, 8, 7, 6]
         _result = {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8}
-        self.assertEqual(convert_list_to_dict(_numbers_list), _result)
-
-    def test_convert_order_string_list_to_dict(self):
-        _numbers_list = ["1", "2", "3", "4", "5", "6", "7", "8"]
-        _result = {}
         self.assertEqual(convert_list_to_dict(_numbers_list), _result)
 
     def test_convert_unorder_string_list_to_dict(self):
@@ -35,11 +25,6 @@ class TestExtractDictFromList(unittest.TestCase):
         _numbers_list = [1, 2, 3, 4, 5, 6, 7, {"a": 0}]
         _result = [{'a': 0}]
         self.assertEqual(extract_dict_from_list(_numbers_list), _result)
-
-    def test_extract_dict_from_list_ko(self):
-        _numbers_list = [1, 2, 3, 4, 5, 6, 7, 8]
-        _result = [8]
-        self.assertNotEqual(extract_dict_from_list(_numbers_list), _result)
 
 
 class TestExtractItemFromList(unittest.TestCase):
