@@ -92,6 +92,10 @@ class TestGetValueFromOddKey(unittest.TestCase):
         _result = ['a', 'c']
         self.assertNotEqual(get_value_from_odd_key(_numbers_dict), _result)
 
+    def test_get_value_from_odd_key_empty(self):
+        _numbers_dict = {"a": 0}
+        _result = []
+        self.assertEqual(get_value_from_odd_key(_numbers_dict), _result)
 
 class TestReturnLastItems(unittest.TestCase):
     def test_return_last_items_ok(self):
