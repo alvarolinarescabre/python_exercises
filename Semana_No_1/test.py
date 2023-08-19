@@ -26,6 +26,10 @@ class TestExtractDictFromList(unittest.TestCase):
         _result = [{'a': 0}]
         self.assertEqual(extract_dict_from_list(_numbers_list), _result)
 
+    def test_extract_dict_from_list_ko(self):
+        _numbers_list = [1, 2, 3, 4, 5, 6, 7, 8]
+        _result = []
+        self.assertEqual(extract_dict_from_list(_numbers_list), _result)
 
 class TestExtractItemFromList(unittest.TestCase):
     def test_extract_item_from_list_dict(self):
