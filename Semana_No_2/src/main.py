@@ -41,22 +41,25 @@ def get_earlier_date(first_date: str, second_date: str) -> str:
 # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 # >>> foo([(1, 2), (3, 4)], [[5, 6], [7, 8]], ([10, 11, 12], [13, 14, 15]))
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-def flatten(seq: any) -> list:
+def flatten(*args: any) -> list:
     """ This Function Flatten the Items of the Sequence.
 
-    :param seq: This is the Sequence of Integers to Flatten. - list
+    :param args: This is the Sequence of Integers to Flatten. - any
 
     :return: Return a List with Items Flatten. - list
     """
     lst_ = []
-    if not isinstance(seq, dict):
-        for value in seq:
-            if hasattr(value, "__iter__") and not isinstance(value, (str, bytes)):
-                lst_.extend(flatten(value))
-            else:
-                lst_.append(int(value))
+    for value in args:
+        if not isinstance(value, dict):
+            for _ in value:
+                if isinstance(_, list) or isinstance(_, tuple):
+                    lst_.extend(flatten(_))
+                else:
+                    lst_.append(_)
 
-    return list(set(sorted(lst_)))
+            return list(set(sorted(lst_)))
+
+    return lst_
 
 
 # 3)  Write a function that accepts a sequence (a list for example [1, 1, 2, 2, 3, 3, 4, 5])

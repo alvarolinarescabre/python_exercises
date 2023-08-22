@@ -19,14 +19,14 @@ class TestEarlierDate(unittest.TestCase):
 
 class TestFlatten(unittest.TestCase):
     def test_flatten_ok(self):
-        _lst = ["1", (2, 3), [3, 4, 6, [1, 2, 10,  ("0", 5, "7", 9), 4, "8", [11, 12]]]]
+        _seq = [1, (2, 3), [3, 4, 6, [1, 2, 10,  (0, 5, 7, 9), 4, 8, [11, 12]]]]
         _result = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        self.assertEqual(flatten(_lst), _result)
+        self.assertEqual(flatten(_seq), _result)
 
     def test_flatten_ko(self):
-        _lst = {"1": 2, "5": 6, "6":  2, "A": 10, "B": 11}
+        _seq = {"1": 2, "5": 6, "6":  2, "A": 10, "B": 11}
         _result = []
-        self.assertEqual(flatten(_lst), _result)
+        self.assertEqual(flatten(_seq), _result)
 
 
 class TestRemoveDuplicate(unittest.TestCase):
