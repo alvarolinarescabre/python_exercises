@@ -23,7 +23,7 @@ def get_earlier_date(first_date: str, second_date: str) -> str:
 
     :return: Return a Earlier Date. - str
     """
-    return first_date if first_date < second_date else second_date
+    return first_date if first_date.split("/") < second_date.split("/") else second_date
 
 
 # 2) Write a function that takes any number of arguments, this function supports iterables as arguments for example:
@@ -41,7 +41,7 @@ def get_earlier_date(first_date: str, second_date: str) -> str:
 # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 # >>> foo([(1, 2), (3, 4)], [[5, 6], [7, 8]], ([10, 11, 12], [13, 14, 15]))
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-def flatten(seq: list) -> list:
+def flatten(seq: any) -> list:
     """ This Function Flatten the Items of the Sequence.
 
     :param seq: This is the Sequence of Integers to Flatten. - list
@@ -49,14 +49,12 @@ def flatten(seq: list) -> list:
     :return: Return a List with Items Flatten. - list
     """
     lst_ = []
-    for value in seq:
-        if hasattr(value, "__iter__") and not isinstance(value, (str, bytes)):
-            if isinstance(value, dict):
-                lst_.extend(flatten(value.values()))
-            else:
+    if not isinstance(seq, dict):
+        for value in seq:
+            if hasattr(value, "__iter__") and not isinstance(value, (str, bytes)):
                 lst_.extend(flatten(value))
-        else:
-            lst_.append(int(value))
+            else:
+                lst_.append(int(value))
 
     return list(set(sorted(lst_)))
 
@@ -80,4 +78,13 @@ def compact(seq: list) -> list:
 
     :return: Return a List with Items. - list
     """
-    return list(set(sorted(seq)))
+    _lst = []
+    _num_check = 0
+
+    for _num_lst in seq:
+        if _num_check != _num_lst:
+            _lst.append(_num_lst)
+
+        _num_check = _num_lst
+
+    return _lst
