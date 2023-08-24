@@ -23,7 +23,13 @@ def get_earlier_date(first_date: str, second_date: str) -> str:
 
     :return: Return a Earlier Date. - str
     """
-    return first_date if first_date.split("/") < second_date.split("/") else second_date
+    first_date = first_date.split("/")
+    second_date = second_date.split("/")
+
+    if first_date[0] <= second_date[0] and first_date[1] <= second_date[1] and first_date[2] <= second_date[2]:
+        return "/".join(first_date)
+    else:
+        return "/".join(second_date)
 
 
 # 2) Write a function that takes any number of arguments, this function supports iterables as arguments for example:
@@ -48,18 +54,12 @@ def flatten(*args: any) -> list:
 
     :return: Return a List with Items Flatten. - list
     """
-    lst_ = []
+    lst = []
     for value in args:
-        if not isinstance(value, dict):
-            for _ in value:
-                if isinstance(_, list) or isinstance(_, tuple):
-                    lst_.extend(flatten(_))
-                else:
-                    lst_.append(_)
+        for _ in value:
+            lst.extend(_)
 
-            return list(set(sorted(lst_)))
-
-    return lst_
+    return list(set(sorted(lst)))
 
 
 # 3)  Write a function that accepts a sequence (a list for example [1, 1, 2, 2, 3, 3, 4, 5])
@@ -81,13 +81,13 @@ def compact(seq: list) -> list:
 
     :return: Return a List with Items. - list
     """
-    _lst = []
-    _num_check = 0
+    lst = []
+    num_check = 0
 
-    for _num_lst in seq:
-        if _num_check != _num_lst:
-            _lst.append(_num_lst)
+    for num_lst in seq:
+        if num_check != num_lst:
+            lst.append(num_lst)
 
-        _num_check = _num_lst
+        num_check = num_lst
 
-    return _lst
+    return lst
