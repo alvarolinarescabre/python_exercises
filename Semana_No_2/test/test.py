@@ -25,13 +25,13 @@ class TestEarlierDate(unittest.TestCase):
 
 class TestFlatten(unittest.TestCase):
     def test_flatten_list(self):
-        _seq = [(1, 2, 3), [3, 4, 6], [1, 2, 10], (0, 5, 7, 9), [4, 8], [11, 12]]
-        _result = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        _seq = [1, (1, 2, 3), [3, 4, 6], [1, 2, 10], (0, 5, 7, 9), [4, 8], [11, 12]]
+        _result = [0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         self.assertEqual(flatten(_seq), _result)
 
     def test_flatten_tuple(self):
-        _seq = ((1, 2, 3), [3, 4, 6], [1, 2, 10], (0, 5, 7, 9), [4, 8], [11, 12])
-        _result = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        _seq = (1, (1, 2, 3), [3, 4, 6], [1, 2, 10], (0, 5, 7, 9), [4, 8], [11, 12])
+        _result = [0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         self.assertEqual(flatten(_seq), _result)
 
     def test_flatten_empty_list(self):

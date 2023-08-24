@@ -57,9 +57,12 @@ def flatten(*args: any) -> list:
     lst = []
     for value in args:
         for _ in value:
-            lst.extend(_)
+            if isinstance(_, list) or isinstance(_, tuple):
+                lst.extend(_)
+            else:
+                lst.append(_)
 
-    return list(set(sorted(lst)))
+    return list(sorted(lst))
 
 
 # 3)  Write a function that accepts a sequence (a list for example [1, 1, 2, 2, 3, 3, 4, 5])
