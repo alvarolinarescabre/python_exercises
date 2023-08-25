@@ -55,12 +55,12 @@ def flatten(*args: any) -> list:
     :return: Return a List with Items Flatten. - list
     """
     lst = []
-    for value in args:
-        for _ in value:
-            if isinstance(_, list) or isinstance(_, tuple):
-                lst.extend(_)
+    for unpacking in args:
+        for value in unpacking:
+            if isinstance(value, list) or isinstance(value, tuple):
+                lst.extend(value)
             else:
-                lst.append(_)
+                lst.append(value)
 
     return list(sorted(lst))
 
