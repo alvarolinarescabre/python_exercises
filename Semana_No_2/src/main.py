@@ -57,8 +57,7 @@ def flatten(*args: any) -> list:
     lst = []
     for unpacking in args:
         if not isinstance(unpacking, int):
-            for value in unpacking:
-                lst.extend(flatten(value))
+            lst.extend(flatten(*unpacking))
         else:
             lst.append(unpacking)
 
