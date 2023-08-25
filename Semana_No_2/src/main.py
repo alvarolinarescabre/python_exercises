@@ -56,11 +56,12 @@ def flatten(*args: any) -> list:
     """
     lst = []
     for unpacking in args:
-        for value in unpacking:
-            if isinstance(value, list) or isinstance(value, tuple):
-                lst.extend(value)
-            else:
-                lst.append(value)
+        if not isinstance(unpacking, int):
+            for value in unpacking:
+                if isinstance(value, list) or isinstance(value, tuple):
+                    lst.extend(flatten(value))
+        else:
+            lst.append(unpacking)
 
     return list(sorted(lst))
 
