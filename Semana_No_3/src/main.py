@@ -70,5 +70,15 @@ def foo_3(index, return_complete=False, country_initials=("AR", "ES", "VE", "PE"
 # 4) Write a function that takes two positional arguments, two default arguments, and lastly takes args and kwargs.
 # Add three examples by calling your function, you can return or print any output that you want, be creative!
 def greet(name, lastname, age=52, city="Alcorcón", *args, **kwargs):
+    """ Send a greetings to a person.
+
+    :param name: Name of the person - str
+    :param lastname: Lastname of the person - str
+    :param age: Age of the person, it has a 52 by default - int
+    :param city: City of the person, it has Alcorcón by default - str
+    :param args: Positional args to send at the function - any
+    :param kwargs: Key args to send at the function - any
+    :return: The greeting message - str
+    """
     return f"Hi, my name is {name} {lastname}. I'm have {age} old and I live in {city}. " \
            f"My args are {(tuple(v for v in args))} and my kwargs are {kwargs}"
