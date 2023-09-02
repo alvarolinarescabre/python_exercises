@@ -98,7 +98,7 @@ def get_values_from_dict(received_list: list) -> list:
 # las keys de este diccionario tienen que ser integers, no añadir values de keys que sean string u otro tipo de dato,
 # si no hay valores de keys impares devolver una lista vacía.
 def get_value_from_odd_key(received_dict: dict) -> list:
-    """ This Function Take from a Odd Key of Dictionary and Return the Values on List.
+    """ This Function Take from Odd Key of Dictionary and Return the Values on List.
 
     :param received_dict: This is the Dictionary argument of the function with Items.
     :type received_dict: dict, require
