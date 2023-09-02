@@ -1,6 +1,6 @@
 import unittest
 
-from src.main import correct_args, foo_0, foo_1, foo_2, foo_3, unpack_args, greet
+from Semana_No_3.src.main import correct_args, foo_0, foo_1, foo_2, foo_3, unpack_args, greet
 
 
 class TestArgsAndKwargs(unittest.TestCase):
