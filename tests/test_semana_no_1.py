@@ -1,6 +1,6 @@
 import unittest
 
-from src.main import convert_list_to_dict, \
+from Semana_No_1.main import convert_list_to_dict, \
     extract_dict_from_list, \
     extract_item_from_list, \
     get_values_from_dict, \

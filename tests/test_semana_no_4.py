@@ -3,7 +3,7 @@ import unittest
 import tempfile
 
 
-from Semana_No_4.src.main import swap_two_string, count_occurrence, insert_into_middle
+from Semana_No_4.main import swap_two_string, count_occurrence, insert_into_middle
 
 
 class TestSwapString(unittest.TestCase):

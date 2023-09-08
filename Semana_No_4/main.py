@@ -5,11 +5,11 @@
 def swap_two_string(first: str, second: str, n: int) -> str:
     """ Swap two String of n number of characters
 
-        :param first: First String to Swap - str
-        :param second: Second String to Swap - str
-        :param n: Number of Characters of Swap - int
-        :return: The swapped strings or empty string - str
-        """
+    :param first: First String to Swap - str
+    :param second: Second String to Swap - str
+    :param n: Number of Characters of Swap - int
+    :return: The Swapped strings or Empty String - str
+    """
     swap_list = [first, second]
     swap_list = [swap_list[1][:n] + swap_list[0][n:], swap_list[0][:n] + swap_list[1][n:]]
     swap_str = swap_list[0] + swap_list[1]
@@ -25,6 +25,11 @@ def swap_two_string(first: str, second: str, n: int) -> str:
 # On a new string add every char with a value >= 10, otherwise an empty string will be return.
 # The string return should be in alphabet order.
 def count_occurrence(received_str: str) -> str:
+    """ Count Occurrence of String
+
+    :param received_str: String to Count - str
+    :return: The String with Character and Occurrence Number >= 10 - str
+    """
     import string
 
     alphabetic_dict = dict.fromkeys(string.ascii_lowercase, 0)
@@ -60,6 +65,12 @@ def count_occurrence(received_str: str) -> str:
 # 	f) Use the StringIO object to create a result.txt file, if there is no data store on the
 # 	StringIO object raise a custom exception.
 def insert_into_middle(lst: list, filename: str) -> str:
+    """ Insert Into Middle of String
+
+    :param lst: List and Tuple with String - list
+    :param filename: Filename Output - str
+    :return: File Content with this Format: original_string -> change_to -> new_string - str
+    """
     import re
     from io import StringIO
 
@@ -67,13 +78,11 @@ def insert_into_middle(lst: list, filename: str) -> str:
     change_to = str()
 
     for item in lst:
+        original_string = item[0]
         if len(item) == 2:
             change_to = item[1]
-        elif len(item) == 1:
-            item = item + (change_to,)
 
         try:
-            original_string = item[0]
             new_string = re.sub(pattern, change_to, original_string, count=1)
             buffer = StringIO(f"{original_string} -> {change_to} -> {new_string}")
             with open(filename, mode='a') as f:

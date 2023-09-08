@@ -1,6 +1,6 @@
 import unittest
 
-from src.main import flatten, \
+from Semana_No_2.main import flatten, \
                     compact, \
                     get_earlier_date
 

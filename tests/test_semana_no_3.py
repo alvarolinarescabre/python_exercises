@@ -1,6 +1,6 @@
 import unittest
 
-from Semana_No_3.src.main import correct_args, \
+from Semana_No_3.main import correct_args, \
                                 foo_0, \
                                 foo_1, \
                                 foo_2, \
