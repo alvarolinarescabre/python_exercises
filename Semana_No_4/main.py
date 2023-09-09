@@ -72,25 +72,24 @@ def insert_into_middle(lst: list, filename: str = "result.txt") -> str:
     """
     import re
     from io import StringIO
+    from pathlib import Path
 
+    cwd = Path.cwd()
+    file_path = cwd / filename
     pattern = "[A-Z][a-z][A-Z]"
-    change_to = str()
-
+    change_to = "LoL"
+    
     for item in lst:
         original_string = item[0]
         if len(item) == 2:
             change_to = item[1]
-        else:
-            change_to = "LoL"
 
         try:
             new_string = re.sub(pattern, change_to, original_string, count=1)
-            buffer = StringIO(f"{original_string} -> {change_to} -> {new_string}")
-            with open(filename, mode='a') as f:
-                print(buffer.getvalue(), file=f)
-        except Exception:
-            raise "The are a error with the output file"
+            buffer = StringIO(f"{original_string} -> {change_to} -> {new_string}\n")
+            with open(file_path, mode='a') as f:
+                f.writelines(buffer.getvalue())
+        except BaseException:
+            raise TypeError("The are a error with the output file")
 
-    return filename
-
-insert_into_middle([("HelLoWorlD", ), ("HelLoWorlD", "RoR"), ("TookThEtootH",)])
+    return file_path

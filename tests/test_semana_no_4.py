@@ -39,23 +39,25 @@ class TestInsertIntoMiddle(unittest.TestCase):
         test_file = tempfile.mkstemp()[1]
         lst = [("HelLoWorlD", "RoR"), ("TookThEtootH",)]
         result = "HelLoWorlD -> RoR -> HelRoRorlD\nTookThEtootH -> RoR -> TookRoRtootH\n"
-        try:
-            insert_into_middle(lst, test_file)
-            file = open(test_file)
-            contents = file.read()
-            file.close()
-        finally:
-            os.remove(test_file)
+        insert_into_middle(lst, test_file)
+        with open(test_file, "r") as f:
+            contents = f.read()
+        os.remove(test_file)
         self.assertEqual(contents, result)
 
     def test_insert_into_middle_value_lol(self):
         test_file = tempfile.mkstemp()[1]
         lst = [("HelLoWorlD", ), ("HelLoWorlD", "RoR"), ("TookThEtootH",)]
-        result = ""
-        self.assertEqual(insert_into_middle(lst, test_file), result)
+        result = "HelLoWorlD -> LoL -> HelLoLorlD\nHelLoWorlD -> RoR -> HelRoRorlD\nTookThEtootH -> RoR -> " \
+                 "TookRoRtootH\n"
+        insert_into_middle(lst, test_file)
+        with open(test_file, "r") as f:
+            contents = f.read()
+        os.remove(test_file)
+        self.assertEqual(contents, result)
 
-    def test_insert_into_middle_value_error(self):
+    def test_insert_into_middle_raise_error(self):
         test_file = tempfile.mkstemp()[1]
         lst = [(b"HelLoWorlD", b"RoR")]
-        result = "The are a error with the output file"
-        self.assertEqual(insert_into_middle(lst, test_file), result)
+        with self.assertRaises(TypeError):
+            insert_into_middle(lst, test_file)
