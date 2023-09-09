@@ -48,6 +48,12 @@ class TestInsertIntoMiddle(unittest.TestCase):
             os.remove(test_file)
         self.assertEqual(contents, result)
 
+    def test_insert_into_middle_value_lol(self):
+        test_file = tempfile.mkstemp()[1]
+        lst = [("HelLoWorlD", ), ("HelLoWorlD", "RoR"), ("TookThEtootH",)]
+        result = ""
+        self.assertEqual(insert_into_middle(lst, test_file), result)
+
     def test_insert_into_middle_value_error(self):
         test_file = tempfile.mkstemp()[1]
         lst = [(b"HelLoWorlD", b"RoR")]

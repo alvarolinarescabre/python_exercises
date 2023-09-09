@@ -63,12 +63,12 @@ def count_occurrence(received_str: str) -> str:
 #
 # 	f) Use the StringIO object to create a result.txt file, if there is no data store on the
 # 	StringIO object raise a custom exception.
-def insert_into_middle(lst: list, filename: str) -> str:
+def insert_into_middle(lst: list, filename: str = "result.txt") -> str:
     """ Insert Into Middle of String
 
-    :param lst: List and Tuple with String - list
+    :param lst: List of Tuple with String - list
     :param filename: Filename Output - str
-    :return: File Content with this Format: original_string -> change_to -> new_string - str
+    :return: File Path - str
     """
     import re
     from io import StringIO
@@ -80,11 +80,17 @@ def insert_into_middle(lst: list, filename: str) -> str:
         original_string = item[0]
         if len(item) == 2:
             change_to = item[1]
+        else:
+            change_to = "LoL"
 
         try:
             new_string = re.sub(pattern, change_to, original_string, count=1)
             buffer = StringIO(f"{original_string} -> {change_to} -> {new_string}")
             with open(filename, mode='a') as f:
                 print(buffer.getvalue(), file=f)
-        except TypeError:
-            return "The are a error with the output file"
+        except Exception:
+            raise "The are a error with the output file"
+
+    return filename
+
+insert_into_middle([("HelLoWorlD", ), ("HelLoWorlD", "RoR"), ("TookThEtootH",)])
