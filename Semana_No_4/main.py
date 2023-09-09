@@ -10,9 +10,8 @@ def swap_two_string(first: str, second: str, n: int) -> str:
     :param n: Number of Characters of Swap - int
     :return: The Swapped strings or Empty String - str
     """
-    swap_list = [first, second]
-    swap_list = [swap_list[1][:n] + swap_list[0][n:], swap_list[0][:n] + swap_list[1][n:]]
-    swap_str = swap_list[0] + swap_list[1]
+    first, second = second[:n] + first[n:], first[:n] + second[n:]
+    swap_str = first + second
 
     if len(swap_str) < n:
         return ""
