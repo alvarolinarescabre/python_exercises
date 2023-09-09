@@ -10,13 +10,11 @@ def swap_two_string(first: str, second: str, n: int) -> str:
     :param n: Number of Characters of Swap - int
     :return: The Swapped strings or Empty String - str
     """
-    first, second = second[:n] + first[n:], first[:n] + second[n:]
-    swap_str = first + second
-
-    if len(swap_str) < n:
+    if len(first) < n or len(second):
         return ""
-
-    return swap_str
+    else:
+        first, second = second[:n] + first[n:], first[:n] + second[n:]
+        return first + second
 
 
 # 2) Write a function that takes a string as argument, record all occurrence of every char in the given string,
