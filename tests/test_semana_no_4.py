@@ -25,12 +25,12 @@ class TestSwapString(unittest.TestCase):
 class TestStringOccurrences(unittest.TestCase):
     def test_count_occurrence_more_ten(self):
         string = "aeiou aeiou aeiou aeiou aeiou aeiou aeiou aeiou aeiou aeiou aeiou aeiou aeiou aeiou aeiou"
-        result = "a:15,e:15,i:15,o:15,u:15,"
+        result = "aeiou"
         self.assertEqual(count_occurrence(string), result)
 
     def test_count_occurrence_less_ten(self):
         string = "aeiou aeio aeiu aeou aiou eiou aeio aeio aei aeio ae ae ae aeo ae"
-        result = "a:14,e:14,"
+        result = "ae"
         self.assertEqual(count_occurrence(string), result)
 
 

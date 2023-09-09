@@ -18,7 +18,9 @@ def swap_two_string(first: str, second: str, n: int) -> str:
 
 
 # 2) Write a function that takes a string as argument, record all occurrence of every char in the given string,
-# use a dictionary to store the occurrences where key is the char and the value is the frequency of that char.
+# use a dictionary to store the occurrences where key is the char and the value is the frequency of that char
+# on alphabet.
+#
 # On a new string add every char with a value >= 10, otherwise an empty string will be return.
 # The string return should be in alphabet order.
 def count_occurrence(received_str: str) -> str:
