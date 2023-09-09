@@ -15,9 +15,9 @@ class TestSwapString(unittest.TestCase):
         self.assertEqual(swap_two_string(str_0, str_1, n), result)
 
     def test_swap_two_string_less_to_n(self):
-        str_0 = "abcdefg"
+        str_0 = "abc"
         str_1 = "0123456"
-        n = 15
+        n = 10
         result = ""
         self.assertEqual(swap_two_string(str_0, str_1, n), result)
 

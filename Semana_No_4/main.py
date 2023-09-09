@@ -10,7 +10,7 @@ def swap_two_string(first: str, second: str, n: int) -> str:
     :param n: Number of Characters of Swap - int
     :return: The Swapped strings or Empty String - str
     """
-    if len(first) < n < len(second):
+    if len(first) < n or len(second) < n:
         return ""
     else:
         first, second = second[:n] + first[n:], first[:n] + second[n:]
@@ -38,7 +38,7 @@ def count_occurrence(received_str: str) -> str:
 
     for k, v in alphabetic_dict.items():
         if v >= 10:
-            occurrences += k + ":" + str(v) + ","
+            occurrences += k
 
     return occurrences
 
