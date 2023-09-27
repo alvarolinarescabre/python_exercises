@@ -78,7 +78,7 @@ def insert_into_middle(lst: list, filename: str = "result.txt") -> str:
     file_path = cwd / filename
     pattern = "[A-Z][a-z][A-Z]"
     change_to = "LoL"
-    
+
     for item in lst:
         original_string = item[0]
         if len(item) == 2:
